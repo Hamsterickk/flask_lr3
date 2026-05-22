@@ -1,0 +1,380 @@
+{% extends "base.html" %}
+
+{% block title %}Бронирование - Hamster Royal{% endblock %}
+
+{% block extra_head %}
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    ol, ul, menu { padding-inline-start: 0; list-style: none; }
+    .scroll-container > div, .container > div, .Pixso-canvas-0_1 > div { width: 100%; }
+    html, body { width: 100%; height: 100%; margin: 0; background-color: white; }
+    span { word-break: break-word; }
+    .container, .scroll-container { width: 100%; height: 100%; }
+    .scroll-container { overflow: auto; }
+    .Pixso-canvas-0_1 { width: 100%; height: 100%; position: relative; flex-shrink: 0; }
+
+    .Pixso-frame-50_193 { width: 100%; height: 1080px; overflow: hidden; position: relative; flex-shrink: 0; background-color: rgba(255, 255, 255, 1); }
+    .Pixso-rectangle-50_251 { width: 1920px; height: 1080px; position: absolute; left: 0px; top: 0px; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url('/static/image/{{ room.image }}'); }
+    .Pixso-rectangle-50_195 { width: 1920px; height: 100px; position: absolute; left: 0px; top: 100px; background-color: rgba(181, 166, 146, 1); }
+    .Pixso-rectangle-50_196 { width: 1920px; height: 100px; position: absolute; left: 0px; top: 0px; background-color: rgba(228, 232, 233, 1); }
+    .Pixso-vector-50_197 { width: 2.17%; height: 3.86%; background-image: url('/static/image/Vector_50_197.png'); background-size: 100% 100%; background-repeat: no-repeat; position: absolute; left: 86.82%; right: 11.01%; top: 12.22%; bottom: 83.92%; }
+    .Pixso-rectangle-50_198 { width: 50px; height: 50px; position: absolute; left: 83px; top: 124px; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url('/static/image/29824a1d577619c17f35a083b64052d5470b746c.png'); }
+    .Pixso-rectangle-50_199 { width: 50px; height: 50px; position: absolute; left: 855px; top: 124px; background-size: cover; background-image: url('/static/image/9956c8dd6df6101cd3fe4cda3fa40b3cd4fefc7d.png'); }
+    .Pixso-rectangle-50_200 { width: 40px; height: 40px; position: absolute; left: 1800px; top: 25px; background-size: cover; background-image: url('/static/image/e624fd7bf24ca84e28a808898eaea5ef7b0f50b7.png'); }
+    .Pixso-paragraph-50_201 { font-size: 36px; font-family: "Inter-Regular"; font-weight: 400; color: rgba(0, 0, 0, 1); width: 254px; height: 50px; position: absolute; left: 163px; top: 25px; }
+    .Pixso-rectangle-50_202 { width: 60px; height: 60px; position: absolute; left: 78px; top: 14px; background-size: cover; background-image: url('/static/image/5bc405ae4e6410a424f5716018a709e3ae2a4a18.png'); }
+    .Pixso-paragraph-50_203 { font-size: 36px; font-family: "Inter-Regular"; font-weight: 400; color: rgba(0, 0, 0, 1); width: 284px; height: 37px; position: absolute; left: 163px; top: 132px; }
+    .Pixso-paragraph-50_204 { font-size: 36px; font-family: "Inter-Regular"; font-weight: 400; color: rgba(0, 0, 0, 1); width: 127px; height: 46px; position: absolute; left: 938px; top: 130px; }
+    .Pixso-paragraph-50_205 { font-size: 36px; font-family: "Inter-Regular"; font-weight: 400; color: rgba(0, 0, 0, 1); width: 101px; height: 50px; position: absolute; left: 1739px; top: 131px; }
+    .Pixso-paragraph-50_206 { font-size: 28px; font-family: "Inter-Regular"; font-weight: 400; color: rgba(0, 0, 0, 1); width: 234px; height: 50px; position: absolute; left: 1536px; top: 31px; }
+    .Pixso-paragraph-50_207 { font-size: 28px; font-family: "Inter-Regular"; font-weight: 400; color: rgba(0, 0, 0, 1); width: 28.85%; height: 4.63%; position: absolute; left: 27.97%; right: 43.18%; top: 2.87%; bottom: 92.5%; }
+    .Pixso-paragraph-50_208 { font-size: 28px; font-family: "Inter-Regular"; font-weight: 400; color: rgba(0, 0, 0, 1); width: 13.23%; height: 4.63%; position: absolute; left: 64.17%; right: 22.6%; top: 2.87%; bottom: 92.5%; }
+    .Pixso-vector-50_209 { width: 1.98%; height: 3.52%; background-image: url('/static/image/Vector_50_209.png'); background-size: 100% 100%; position: absolute; left: 59.84%; right: 38.18%; top: 2.5%; bottom: 93.98%; }
+    .Pixso-rectangle-50_210 { width: 40px; height: 40px; position: absolute; left: 467px; top: 25px; background-size: cover; background-image: url('/static/image/bdf9d23f7230a55559c910f845ae3a8af3c5041c.png'); }
+    .Pixso-rectangle-50_211 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_211 { position: absolute; left: 1280px; top: 308px; width: 560px; height: 645px; }
+    .stroke-50_211 { position: absolute; inset: 0px; border: 1px solid #000; }
+    .Pixso-rectangle-50_212 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_212 { position: absolute; left: 60px; top: 308px; width: 1005px; height: 645px; }
+    .stroke-50_212 { position: absolute; inset: 0px; border: 1px solid #000; }
+    .Pixso-paragraph-50_213 { font-size: 36px; font-family: "Kapakana-Regular"; font-weight: 400; color: rgba(96, 82, 63, 1); position: absolute; left: 1379px; top: 365px; }
+    .Pixso-paragraph-50_214 { font-size: 36px; font-family: "Kapakana-Regular"; font-weight: 400; color: rgba(96, 82, 63, 1); position: absolute; left: 158px; top: 365px; }
+    .Pixso-rectangle-50_215 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_215 { position: absolute; left: 1320px; top: 436px; width: 480px; height: 71px; }
+    .stroke-50_215 { position: absolute; inset: 0px; border: 1px solid #000; pointer-events: none; }
+    .Pixso-rectangle-50_216 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_216 { position: absolute; left: 1357px; top: 838px; width: 413px; height: 71px; }
+    .stroke-50_216 { position: absolute; inset: 0px; border: 1px solid #000; }
+    .Pixso-rectangle-50_218 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_218 { position: absolute; left: 100px; top: 436px; width: 440px; height: 71px; }
+    .stroke-50_218 { position: absolute; inset: 0px; border: 1px solid #000; }
+    .Pixso-rectangle-50_220 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_220 { position: absolute; left: 100px; top: 638px; width: 440px; height: 71px; }
+    .stroke-50_220 { position: absolute; inset: 0px; border: 1px solid #000; }
+    .Pixso-rectangle-50_222 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_222 { position: absolute; left: 585px; top: 638px; width: 440px; height: 71px; }
+    .stroke-50_222 { position: absolute; inset: 0px; border: 1px solid #000; }
+    .Pixso-rectangle-50_224 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_224 { position: absolute; left: 100px; top: 537px; width: 440px; height: 71px; }
+    .stroke-50_224 { position: absolute; inset: 0px; border: 1px solid #000; }
+    .Pixso-rectangle-50_226 { width: 100%; height: 100%; position: relative; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_226 { position: absolute; left: 585px; top: 436px; width: 440px; height: 71px; }
+    .stroke-50_226 { position: absolute; inset: 0px; border: 1px solid #000; }
+    .Pixso-paragraph-50_228 { font-size: 26px; font-family: "Inter-Regular"; color: rgba(96, 82, 63, 1); position: absolute; left: 1456px; top: 854px; }
+    .Pixso-vector-50_229 { width: 30px; height: 30px; background-image: url('/static/image/calendareventline.png'); background-size: 100% 100%; position: absolute; left: 1755px; top: 457px; }
+    .Pixso-text-50_231 { font-size: 26px; font-family: "Inter-Regular"; line-height: 40px; color: rgba(96, 82, 63, 1); width: 455px; position: absolute; left: 1330px; top: 540px; }
+    .Pixso-paragraph-50_232 { font-size: 30px; font-family: "Inter-Semi Bold"; font-weight: 600; color: rgba(96, 82, 63, 1); position: absolute; left: 1330px; top: 773px; }
+    .Pixso-rectangle-50_233 { width: 100%; height: 100%; position: relative; border-radius: 10px; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_233 { position: absolute; left: 100px; top: 754px; width: 40px; height: 40px; }
+    .stroke-50_233 { position: absolute; inset: 0px; border-radius: 10px; border: 1px solid #000; }
+    .Pixso-rectangle-50_234 { width: 100%; height: 100%; position: relative; border-radius: 10px; background-color: rgba(255, 241, 223, 1); }
+    .stroke-wrapper-50_234 { position: absolute; left: 100px; top: 839px; width: 40px; height: 40px; }
+    .stroke-50_234 { position: absolute; inset: 0px; border-radius: 10px; border: 1px solid #000; }
+    .Pixso-paragraph-50_235 { font-size: 26px; font-family: "Inter-Regular"; color: rgba(96, 82, 63, 1); position: absolute; left: 163px; top: 754px; white-space: nowrap; }
+    .Pixso-text-50_236 { font-size: 26px; font-family: "Inter-Regular"; line-height: 40px; color: rgba(96, 82, 63, 1); width: 862px; position: absolute; left: 163px; top: 840px; }
+    .Pixso-paragraph-86_33 { font-size: 36px; font-family: "Inter-Regular"; color: rgba(0,0,0,1); position: absolute; left: 1341px; top: 130px; }
+    .Pixso-rectangle-86_37 { width: 60px; height: 60px; position: absolute; left: 1251px; top: 115px; background-image: url('/static/image/be88ae1e69bc142c1f93b625cf265d5d05d239fa.png'); background-size: cover; }
+    .Pixso-group-86_91 { width: 246px; height: 60px; position: absolute; left: 454px; top: 121px; }
+    .Pixso-paragraph-86_92 { font-size: 36px; font-family: "Inter-Regular"; color: rgba(0,0,0,1); position: absolute; left: 90px; top: 9px; }
+    .Pixso-rectangle-86_93 { width: 60px; height: 60px; position: absolute; left: 0; top: 0; background-image: url('/static/image/4bd20638016dd4ec2516a186b9e5d67c7b2370d7.png'); background-size: cover; }
+
+    .booking-input { position: absolute; border: none; background: transparent; font-size: 26px; font-family: "Inter-Regular"; color: rgba(96, 82, 63, 1); outline: none; height: 40px; }
+    .booking-input::placeholder { color: rgba(96, 82, 63, 0.48); }
+
+    .check-icon-img { width: 35px; height: 35px; position: absolute; background-size: cover; background-image: url('/static/image/check_filled.png'); pointer-events: none; }
+    .check-wrapper input:checked ~ .check-icon-img { background-image: url('/static/image/19b0b53ae8e4c94ed59f4f249dd77d3289f1d0f6.png'); }
+
+    #confirm_modal_toggle { display: none; }
+    .confirm-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(196, 196, 196, 0.56); z-index: 4000; display: none; }
+    .confirm-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 4001; display: none; }
+    #confirm_modal_toggle:checked ~ .confirm-overlay, #confirm_modal_toggle:checked ~ .confirm-modal { display: block; }
+
+    #privacy_toggle, #terms_toggle { display: none; }
+    .agreement-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(196, 196, 196, 0.56); z-index: 3000; display: none; }
+    .agreement-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 900px; height: 600px; background: #FFF1DF; border: 1px solid #000; z-index: 3001; overflow-y: auto; padding: 30px; display: none; }
+    #privacy_toggle:checked ~ .privacy-overlay, #privacy_toggle:checked ~ .privacy-modal { display: block; }
+    #terms_toggle:checked ~ .terms-overlay, #terms_toggle:checked ~ .terms-modal { display: block; }
+
+    /* ========== МОДАЛКА ПРОФИЛЯ ========== */
+    #modal_profile_toggle { display: none; }
+    .modal-overlay-profile { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(196, 196, 196, 0.56); z-index: 999; display: none; }
+    .modal-profile { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; display: none; }
+    #modal_profile_toggle:checked ~ .modal-overlay-profile, #modal_profile_toggle:checked ~ .modal-profile { display: block; }
+    .Pixso-rectangle-41_58 { width: 2069px; height: 1301px; position: absolute; left: -88px; top: -62px; background-color: rgba(196, 196, 196, 1); opacity: 0.56; }
+    .profile-modal-box { background: #FFF1DF; border: 1px solid #000; }
+    .profile-modal-text { font-size: 30px; font-family: "Inter-Regular"; color: #000; position: absolute; }
+    .profile-modal-placeholder { font-size: 30px; font-family: "Inter-Regular"; color: #000; opacity: 0.48; position: absolute; }
+    .profile-modal-input { position: absolute; border: none; background: transparent; font-size: 30px; font-family: 'Inter-Regular'; color: #000; opacity: 0.48; outline: none; width: 640px; height: 40px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<input type="checkbox" id="modal_profile_toggle" style="display: none;">
+<input type="checkbox" id="privacy_toggle" style="display: none;">
+<input type="checkbox" id="terms_toggle" style="display: none;">
+<input type="checkbox" id="confirm_modal_toggle" style="display: none;">
+
+<div class="scroll-container">
+    <div id="0_1" class="Pixso-canvas-0_1">
+        <div id="50_193" class="Pixso-frame-50_193">
+            <div id="50_251" class="Pixso-rectangle-50_251"></div>
+            <div id="50_195" class="Pixso-rectangle-50_195"></div>
+            <div id="50_196" class="Pixso-rectangle-50_196"></div>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('profile') }}{% else %}{{ url_for('index') }}{% endif %}" id="50_197" class="Pixso-vector-50_197" style="cursor: pointer; display: block;"></a>
+            <a href="{{ url_for('service') }}" id="50_198" class="Pixso-rectangle-50_198" style="cursor: pointer; display: block;"></a>
+            <a href="{{ url_for('service') }}" id="50_199" class="Pixso-rectangle-50_199" style="cursor: pointer; display: block;"></a>
+            <label for="modal_profile_toggle" id="50_200" class="Pixso-rectangle-50_200" style="cursor: pointer; display: block;"></label>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('profile') }}{% else %}{{ url_for('index') }}{% endif %}" id="50_201" class="Pixso-paragraph-50_201" style="cursor: pointer; text-decoration: none; color: inherit;">Hamster Royal</a>
+            <div id="50_202" class="Pixso-rectangle-50_202" style="cursor: pointer;"></div>
+            <a href="{{ url_for('rooms') }}" id="50_203" class="Pixso-paragraph-50_203" style="cursor: pointer; text-decoration: none; color: inherit;">Номера</a>
+            <a href="{{ url_for('service') }}" id="50_204" class="Pixso-paragraph-50_204" style="cursor: pointer; text-decoration: none; color: inherit;">Услуги</a>
+            <a href="{{ url_for('about') }}" id="50_205" class="Pixso-paragraph-50_205" style="cursor: pointer; text-decoration: none; color: inherit;">О нас</a>
+            <label for="modal_profile_toggle" id="50_206" class="Pixso-paragraph-50_206" style="cursor: pointer;">Личный кабинет</label>
+            <p id="50_207" class="Pixso-paragraph-50_207">Москва, Ул. Пушкина, дом Колотушкина</p>
+            <p id="50_208" class="Pixso-paragraph-50_208">8 (800) 555 35 35</p>
+            <div id="50_209" class="Pixso-vector-50_209"></div>
+            <div id="50_210" class="Pixso-rectangle-50_210"></div>
+            <div id="50_211" class="stroke-wrapper-50_211"><div class="Pixso-rectangle-50_211"></div><div class="stroke-50_211"></div></div>
+            <div id="50_212" class="stroke-wrapper-50_212"><div class="Pixso-rectangle-50_212"></div><div class="stroke-50_212"></div></div>
+            <p id="50_213" class="Pixso-paragraph-50_213">Ваше бронирование</p>
+            <p id="50_214" class="Pixso-paragraph-50_214">Введите свои данные</p>
+
+            <form id="booking_form" onsubmit="showConfirm(event)">
+                <input type="hidden" name="room_type" value="{{ room.name }}">
+
+                <div id="50_215" class="stroke-wrapper-50_215">
+                    <div class="Pixso-rectangle-50_215"></div>
+                    <div class="stroke-50_215"></div>
+                    <p id="date_checkin_display" style="position: absolute; left: 37px; top: 19px; font-size: 26px; font-family: 'Inter-Regular'; color: rgba(96,82,63,1); white-space: pre; pointer-events: none;">дд.мм.гггг</p>
+                    <div id="cal_icon_left" style="width: 30px; height: 30px; background-image: url('/static/image/calendareventline0.png'); background-size: 100% 100%; position: absolute; left: 216px; top: 21px; pointer-events: none;"></div>
+                    <p id="date_checkout_display" style="position: absolute; left: 273px; top: 19px; font-size: 26px; font-family: 'Inter-Regular'; color: rgba(96,82,63,1); white-space: pre; pointer-events: none;">дд.мм.гггг</p>
+                    <div id="cal_icon_right" style="width: 30px; height: 30px; background-image: url('/static/image/calendareventline.png'); background-size: 100% 100%; position: absolute; left: 435px; top: 21px; pointer-events: none;"></div>
+                    <input type="date" name="check_in" id="check_in_field" required style="position: absolute; left: 20; top: 0; width: 240px; height: 71px; opacity: 0; cursor: pointer; z-index: 3;" onchange="updateDates()">
+                    <input type="date" name="check_out" id="check_out_field" required style="position: absolute; left: 240px; top: 0; width: 220px; height: 71px; opacity: 0; cursor: pointer; z-index: 3;" onchange="updateDates()">
+                </div>
+
+                <div id="50_218" class="stroke-wrapper-50_218"><div class="Pixso-rectangle-50_218"></div><div class="stroke-50_218"></div></div>
+                <input type="text" name="last_name" required class="booking-input" style="left:110px;top:452px;width:410px;" placeholder="Фамилия *" oninput="this.value = this.value.replace(/[^а-яА-ЯёЁ]/g, '')">
+
+                <div id="50_226" class="stroke-wrapper-50_226"><div class="Pixso-rectangle-50_226"></div><div class="stroke-50_226"></div></div>
+                <input type="text" name="first_name" required class="booking-input" style="left:605px;top:452px;width:410px;" placeholder="Имя *" value="" oninput="this.value = this.value.replace(/[^а-яА-ЯёЁ]/g, '')">
+
+                <div id="50_224" class="stroke-wrapper-50_224"><div class="Pixso-rectangle-50_224"></div><div class="stroke-50_224"></div></div>
+                <input type="text" name="middle_name" class="booking-input" style="left:110px;top:553px;width:410px;" placeholder="Отчество (при наличии)" oninput="this.value = this.value.replace(/[^а-яА-ЯёЁ]/g, '')">
+
+                <div id="50_220" class="stroke-wrapper-50_220"><div class="Pixso-rectangle-50_220"></div><div class="stroke-50_220"></div></div>
+                <input type="tel" name="phone" id="phone_input" required class="booking-input" style="left:110px;top:654px;width:410px;" placeholder="Номер телефона *" oninput="formatPhone(this)" maxlength="18">
+
+                <div id="50_222" class="stroke-wrapper-50_222"><div class="Pixso-rectangle-50_222"></div><div class="stroke-50_222"></div></div>
+                <input type="email" name="email" required class="booking-input" style="left:595px;top:654px;width:410px;" placeholder="Электронная почта *" value="{{ current_user.email if current_user.is_authenticated else '' }}">
+
+                <div id="50_216" class="stroke-wrapper-50_216"><div class="Pixso-rectangle-50_216"></div><div class="stroke-50_216"></div></div>
+                <button type="submit" id="50_228" class="Pixso-paragraph-50_228" style="position:absolute;left:1456px;top:854px;border:none;background:transparent;font-size:26px;font-family:'Inter-Regular';color:rgba(96,82,63,1);cursor:pointer;">Забронировать</button>
+
+                <div id="50_233" class="stroke-wrapper-50_233" style="cursor: pointer;">
+                    <div class="Pixso-rectangle-50_233"></div>
+                    <div class="stroke-50_233"></div>
+                    <div class="check-wrapper" style="position: absolute; left: 0; top: 0; width: 40px; height: 40px;">
+                        <input type="checkbox" name="agree_marketing" style="position: absolute; width: 40px; height: 40px; opacity: 0; cursor: pointer; z-index: 2;">
+                        <div class="check-icon-img" style="left: 3px; top: 3px;"></div>
+                    </div>
+                </div>
+                <p id="50_235" class="Pixso-paragraph-50_235">Я даю согласие на получение специальных предложений и новостей</p>
+
+                <div id="50_234" class="stroke-wrapper-50_234" style="cursor: pointer;">
+                    <div class="Pixso-rectangle-50_234"></div>
+                    <div class="stroke-50_234"></div>
+                    <div class="check-wrapper" style="position: absolute; left: 0; top: 0; width: 40px; height: 40px;">
+                        <input type="checkbox" name="agree_privacy" required style="position: absolute; width: 40px; height: 40px; opacity: 0; cursor: pointer; z-index: 2;">
+                        <div class="check-icon-img" style="left: 3px; top: 3px;"></div>
+                    </div>
+                </div>
+                <div id="50_236" class="Pixso-text-50_236">
+                    Я даю согласие на <label for="privacy_toggle" style="text-decoration:underline;cursor:pointer;">обработку персональных данных</label> и подтверждаю ознакомление с <label for="terms_toggle" style="text-decoration:underline;cursor:pointer;">пользовательским соглашением</label>
+                </div>
+            </form>
+
+            <div id="50_231" class="Pixso-text-50_231">
+                <p>Номер: {{ room.price }}р</p><p>{{ room.name }}</p><p>&nbsp;</p>
+                <p>Заезд осуществляется с 14:00</p><p>Выезд осуществляется до 12:00</p>
+            </div>
+            <p id="50_232" class="Pixso-paragraph-50_232">К оплате <span id="total_price_display">{{ room.price }}</span>р</p>
+            <a href="{{ url_for('reviews') }}" id="86_33" class="Pixso-paragraph-86_33" style="cursor:pointer;text-decoration:none;color:inherit;">Отзывы</a>
+            <a href="{{ url_for('reviews') }}" id="86_37" class="Pixso-rectangle-86_37" style="cursor:pointer;display:block;"></a>
+            <a href="{{ url_for('wallet') }}" id="86_91" class="Pixso-group-86_91" style="cursor:pointer;text-decoration:none;color:inherit;">
+                <p id="86_92" class="Pixso-paragraph-86_92">Кошелек</p><div id="86_93" class="Pixso-rectangle-86_93"></div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Модалка подтверждения -->
+<div class="confirm-overlay" onclick="document.getElementById('confirm_modal_toggle').checked=false;"></div>
+<div class="confirm-modal" style="width:1002px;height:700px;background:#FFF1DF;border:1px solid #000;padding:40px;text-align:center;font-family:'Inter-Regular';">
+    <p style="font-size:36px;font-family:'Inter-Semi Bold';font-weight:600;color:rgba(96,82,63,1);margin-bottom:30px;">Подтверждение брони</p>
+    <div id="confirm_details" style="font-size:32px;font-family:'Inter-Medium';font-weight:500;color:rgba(96,82,63,1);text-align:left;line-height:39px;margin-bottom:60px;"></div>
+    <div style="display:flex;gap:20px;justify-content:center;">
+        <label for="confirm_modal_toggle" style="width:413px;height:71px;background:#FFF1DF;border:1px solid #000;font-size:26px;font-family:'Inter-Regular';color:rgba(96,82,63,1);display:flex;align-items:center;justify-content:center;cursor:pointer;">Отмена</label>
+        <button onclick="submitBooking()" style="width:413px;height:71px;background:#FFF1DF;border:1px solid #000;font-size:26px;font-family:'Inter-Regular';color:rgba(96,82,63,1);cursor:pointer;">Подтвердить</button>
+    </div>
+</div>
+
+<!-- Модалка "Обработка персональных данных" -->
+<div class="agreement-modal-overlay privacy-overlay" onclick="document.getElementById('privacy_toggle').checked=false;"></div>
+<div class="agreement-modal privacy-modal">
+    <label for="privacy_toggle" style="position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; z-index: 10;">&times;</label>
+    <p style="font-size: 48px; font-family: 'Inter-Regular'; font-weight: 400; color: rgba(96, 82, 63, 1); margin-bottom: 30px;">Согласие на обработку персональных данных</p>
+    <div style="font-size: 14px; font-family: 'Inter-Regular'; line-height: 40px; color: rgba(96, 82, 63, 1);">
+        <p>Настоящим, я, действуя свободно, своей волей и в своем интересе, а также подтверждая свою дееспособность, предоставляя данные о себе, даю согласие АКЦИОНЕРНОЕ ОБЩЕСТВО ТУРИСТСКИЕ ГОСТИНИЧНЫЕ КОМПЛЕКСЫ "ИЗМАЙЛОВО", ИНН 7719017101, адрес: 105613, г. Москва, ш. Измайловское, д. 71, К. 4 г-д, ком. 8 пом. VII-Гд 4 эт (далее - Оператор) на обработку следующих моих персональных данных, указанных мною как при бронировании Проживания на сайте Оператора, так и предоставленные через личный кабинет на сайте Оператора или иным способом, с целью оформления и исполнения бронирования Проживания, в том числе оказания дополнительных услуг в Средстве/Объекте размещения Оператора:</p>
+        <p>- фамилия, имя, отчество (при наличии);</p>
+        <p>- контактная информация (номер телефона, электронный адрес);</p>
+        <p>- гражданство;</p>
+        <p>- период пребывания (дата заезда, дата выезда, цель въезда, № комнаты);</p>
+        <p>- условия проживания;</p>
+        <p>- информация о гостях;</p>
+        <p>- дата рождения (число/месяц/год);</p>
+        <p>- данные документа, удостоверяющий личность (серия, номер, дата выдачи, код подразделения, орган, выдавший документ, страна рождения, регион рождения, район, город, населенный пункт).</p>
+        <p>Для достижения указанной цели Оператор может осуществлять любые действия (операции) или совокупности действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с персональными данными, указанными выше, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (предоставление, доступ), блокирование, удаление, уничтожение персональных данных.</p>
+        <p>Я даю согласие Оператору на передачу (предоставление, доступ) персональных данных, указанных выше, в адрес следующего юридического лица, действующего по поручению Оператора: ООО «ТРЭВЕЛ ЛАЙН СИСТЕМС», ИНН 1215180595, ОГРН 1141215003214, юридический адрес: 424031, Республика Марий Эл, г. Йошкар-Ола, ул. Комсомольская, д. 112 в целях автоматизации бизнес-процессов, централизованного хранения и управления данными Оператора, а так же осуществление с ними следующих действий (операций): сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (предоставление, доступ), блокирование, удаление, уничтожение.</p>
+        <p>Я подтверждаю, что предоставленные мной персональные данные являются точными, актуальными и достоверными, также обязуюсь своевременно информировать Оператора об изменениях в моих персональных данных по адресу электронной почты: logvinova@izmailovo.ru, либо в письменной форме на адрес: 105613, г. Москва, ш. Измайловское, д. 71, К. 4 г-д, ком. 8 пом. VII-Гд 4 эт.</p>
+        <p>Настоящее согласие вступает в силу с момента его предоставления, путем проставления галочки на сайте Оператора.</p>
+        <p>Согласие действует до факта достижения цели обработки или до отзыва согласия.</p>
+        <p>В соответствии с положениями ч. 2 ст. 9 Федерального закона от 27 июля 2006 г. N 152-ФЗ «О персональных данных» оставляю за собой право отозвать данное согласие посредством направления такого отзыва по адресу электронной почты: logvinova@izmailovo.ru, либо в письменной форме на адрес: 105613, г. Москва, ш. Измайловское, д. 71, К. 4 г-д, ком. 8 пом. VII-Гд 4 эт.</p>
+        <p>Я предупрежден(а), что в случае отзыва согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без согласия при наличии оснований, указанных в пп. 2-11 ч. 1 ст. 6, ч. 2 ст. 10 Федерального закона от 27 июля 2006 г. N 152-ФЗ «О персональных данных».</p>
+    </div>
+</div>
+
+<!-- Модалка "Пользовательское соглашение" -->
+<div class="agreement-modal-overlay terms-overlay" onclick="document.getElementById('terms_toggle').checked=false;"></div>
+<div class="agreement-modal terms-modal">
+    <label for="terms_toggle" style="position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; z-index: 10;">&times;</label>
+    <p style="font-size: 48px; font-family: 'Inter-Regular'; font-weight: 400; color: rgba(96, 82, 63, 1); margin-bottom: 30px;">Пользовательское соглашение</p>
+    <div style="font-size: 14px; font-family: 'Inter-Regular'; line-height: 40px; color: rgba(96, 82, 63, 1);">
+        <p>Настоящее Пользовательское соглашение разработано Компанией TravelLine и применяется при самостоятельном бронировании Клиентом («Пользователь») в сети Интернет Проживания в Средствах/Объектах размещения через Модуль онлайн-бронирования TravelLine: Booking Engine.</p>
+        <p>Используя Модуль онлайн-бронирования TravelLine: Booking Engine, Вы подтверждаете, что Вы прочли и поняли данное Пользовательское соглашение и обязуетесь его придерживаться и соблюдать. В случае несогласия Пользователя с какими-либо из положений Пользовательского соглашения, Пользователь не вправе использовать Модуль онлайн-бронирования TravelLine: Booking Engine.</p>
+        <p>Все персональные данные, которые Вы вводите во время бронирования, во время регистрации в Личном кабинете гостя, либо разрешаете получать из ваших аккаунтов в сторонних сервисах (например, VK ID, T-ID (Tinkoff ID), Сбер ID, Alfa ID) и которые собираются автоматически, находятся в полной безопасности.</p>
+        <p>Пользовательское соглашение может быть изменено без какого-либо специального уведомления. Новая редакция Пользовательского соглашения вступает в силу с момента ее размещения в Модуле онлайн-бронирования TravelLine: Booking Engine.</p>
+        <p>Модуль онлайн-бронирования TravelLine: Booking Engine предоставляет Пользователю техническую возможность самостоятельно забронировать Проживание в Средствах/Объектах размещения.</p>
+        <p>Под Средством размещения следует понимать помещение, используемое для предоставления услуг размещения (Гостиница, Санаторий, Отель, Мини-Отель, Гостиничный комплекс и прочие).</p>
+        <p>Под Объектом размещения следует понимать помещение, предоставляемое Пользователю в аренду за плату во временное владение и пользование для проживания в нем по договору найма помещения.</p>
+        <p>Под Проживанием следует понимать комнату/квартиру/дом в Объекте размещения или номер (и/или услуги) в Средстве размещения.</p>
+        <p>Компания TravelLine не является агентом выбранного Пользователем Средства/Объекта размещения, не является посредником между Пользователем и Средством/Объектом размещения и не осуществляет бронирование Проживаний за Пользователя в Средстве/Объекте размещения.</p>
+        <p>Компания TravelLine не взимает с Пользователя какой-либо платы за использование Модуля онлайн-бронирования TravelLine: Booking Engine в целях бронирования Проживания в Средствах размещения или аренды в Объектах размещения.</p>
+        <p>1. Договор о предоставлении услуги бронирования Проживания в выбранном Пользователем Средстве/Объекте размещения заключается между Пользователем и Средством/Объектом размещения без участия Компании TravelLine.</p>
+        <p>Обязанной перед Пользователем стороной по договору является АКЦИОНЕРНОЕ ОБЩЕСТВО ТУРИСТСКИЕ ГОСТИНИЧНЫЕ КОМПЛЕКСЫ "ИЗМАЙЛОВО", 7719017101/771901001, +7 (495) 737-71-60, logvinova@izmailovo.ru.</p>
+        <p>2. Оформленное бронирование Проживания можно оплатить любым из поддерживаемых Модулем онлайн-бронирования TravelLine: Booking Engine способов.</p>
+        <p>Также Модуль онлайн-бронирования TravelLine: Booking Engine при оплате оформленного Проживания позволяет учитывать баллы и/или персонализированные предложения и скидки.</p>
+    </div>
+</div>
+
+
+
+<!-- МОДАЛКА ПРОФИЛЯ -->
+<div class="modal-overlay-profile" onclick="document.getElementById('modal_profile_toggle').checked=false;"></div>
+<div class="modal-profile">
+    <div style="position: relative; width: 100%; height: 100%;">
+        <div class="Pixso-rectangle-41_58"></div>
+        <div class="profile-modal-box" style="position: absolute; left: 586px; top: 169px; width: 748px; height: 70px;"></div>
+        <div class="profile-modal-box" style="position: absolute; left: 586px; top: 239px; width: 748px; height: 680px;"></div>
+        <form method="POST" action="{{ url_for('edit_profile') }}" id="profile_form">
+            <input type="hidden" name="next" value="{{ request.url }}">
+            <label for="modal_profile_toggle" class="profile-modal-box" style="cursor: pointer; position: absolute; left: 625px; top: 798px; width: 296px; height: 71px;" onclick="document.getElementById('profile_form').reset();"></label>
+            <button type="submit" style="cursor: pointer; border: 1px solid #000; background: #FFF1DF; position: absolute; left: 999px; top: 798px; width: 296px; height: 71px;"></button>
+            <div class="profile-modal-box" style="position: absolute; left: 625px; top: 312px; width: 670px; height: 71px;"></div>
+            <p class="profile-modal-text" style="left: 625px; top: 263px;">Имя пользователя</p>
+            <input type="text" name="name" value="{{ current_user.name if current_user.is_authenticated else '' }}" placeholder="Текущее имя пользователя"
+                   class="profile-modal-input" style="left: 638px; top: 330px;">
+            <p class="profile-modal-text" style="left: 625px; top: 408px;">Сменить почту</p>
+            <div class="profile-modal-box" style="position: absolute; left: 625px; top: 457px; width: 670px; height: 71px;"></div>
+            <input type="email" name="email" value="{{ current_user.email if current_user.is_authenticated else '' }}" placeholder="Введите новый адрес электронной почты"
+                   class="profile-modal-input" style="left: 638px; top: 474px;">
+            <p class="profile-modal-text" style="left: 625px; top: 553px;">Сменить пароль</p>
+            <div class="profile-modal-box" style="position: absolute; left: 625px; top: 602px; width: 670px; height: 71px;"></div>
+            <input type="password" name="new_password" placeholder="Введите новый пароль"
+                   class="profile-modal-input" style="left: 638px; top: 620px;">
+            <p class="profile-modal-text" style="left: 864px; top: 182px; font-size: 36px;">ПРОФИЛЬ</p>
+            <p class="profile-modal-placeholder" style="left: 1051px; top: 816px;">СОХРАНИТЬ</p>
+            <p class="profile-modal-placeholder" style="left: 704px; top: 816px;">ОТМЕНА</p>
+            <a href="{{ url_for('logout') }}" style="width: 50px; height: 50px; background-image: url('/static/image/exit_to_app.png'); background-size: 100% 100%; background-repeat: no-repeat; position: absolute; left: 48.7%; top: 711px; cursor: pointer; display: block; z-index: 10;"></a>
+            <a href="{{ url_for('logout') }}" style="position: absolute; left: 625px; top: 717px; font-size: 30px; font-family: 'Inter-Regular'; font-weight: 600; color: #000; text-decoration: none;">Выйти из профиля</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+    const today = new Date(); today.setDate(today.getDate() + 1);
+    document.getElementById('check_in_field').min = today.toISOString().split('T')[0];
+
+    function updateDates() {
+        const checkIn = document.getElementById('check_in_field').value;
+        const checkOut = document.getElementById('check_out_field').value;
+        const displayIn = document.getElementById('date_checkin_display');
+        const displayOut = document.getElementById('date_checkout_display');
+
+        if (checkIn) {
+            const d = checkIn.split('-');
+            displayIn.textContent = d[2] + '.' + d[1] + '.' + d[0];
+            let next = new Date(checkIn); next.setDate(next.getDate() + 1);
+            document.getElementById('check_out_field').min = next.toISOString().split('T')[0];
+        } else {
+            displayIn.textContent = 'дд.мм.гггг';
+        }
+
+        if (checkOut) {
+            const d = checkOut.split('-');
+            displayOut.textContent = d[2] + '.' + d[1] + '.' + d[0];
+        } else {
+            displayOut.textContent = 'дд.мм.гггг';
+        }
+
+        if (checkIn && checkOut) {
+            const d1 = new Date(checkIn);
+            const d2 = new Date(checkOut);
+            const days = Math.max(1, Math.round((d2 - d1) / (1000 * 60 * 60 * 24)));
+            document.getElementById('total_price_display').textContent = {{ room.price }} * days;
+        } else {
+            document.getElementById('total_price_display').textContent = {{ room.price }};
+        }
+    }
+
+    function formatPhone(input) {
+        let v = input.value.replace(/\D/g, '');
+        if (!v.startsWith('7')) v = '7' + v;
+        v = v.substring(0, 11);
+        let f = '+7';
+        if (v.length > 1) f += ' (' + v.substring(1, 4);
+        if (v.length >= 4) f += ') ' + v.substring(4, 7);
+        if (v.length >= 7) f += '-' + v.substring(7, 9);
+        if (v.length >= 9) f += '-' + v.substring(9, 11);
+        input.value = f;
+    }
+
+    function showConfirm(e) {
+        e.preventDefault();
+        if (!document.getElementById('booking_form').checkValidity()) { document.getElementById('booking_form').reportValidity(); return; }
+        const f = document.forms['booking_form'];
+        const dIn = f.check_in.value.split('-');
+        const dOut = f.check_out.value.split('-');
+        document.getElementById('confirm_details').innerHTML =
+            'Фамилия: ' + f.last_name.value + '<br>' +
+            'Имя: ' + f.first_name.value + '<br>' +
+            'Отчество: ' + (f.middle_name.value || '—') + '<br>' +
+            'Номер телефона: ' + f.phone.value + '<br>' +
+            'Электронная почта: ' + f.email.value + '<br>' +
+            dIn[2] + '.' + dIn[1] + '.' + dIn[0] + '—' + dOut[2] + '.' + dOut[1] + '.' + dOut[0] + '<br>' +
+            'Номер ' + f.room_type.value + '<br>' +
+            document.getElementById('total_price_display').textContent + 'р';
+        document.getElementById('confirm_modal_toggle').checked = true;
+    }
+
+    function submitBooking() {
+        document.getElementById('confirm_modal_toggle').checked = false;
+        document.getElementById('booking_form').action = "{{ url_for('create_booking') }}";
+        document.getElementById('booking_form').method = "POST";
+        document.getElementById('booking_form').submit();
+    }
+</script>
+{% endblock %}

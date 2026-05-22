@@ -1,0 +1,1199 @@
+{% extends "base.html" %}
+
+{% block title %}Отзывы - Hamster Royal{% endblock %}
+
+{% block extra_head %}
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    ol, ul, menu {
+        padding-inline-start: 0;
+        list-style: none;
+    }
+
+    ol li::marker, ul li::before {
+        letter-spacing: 0;
+    }
+
+    .scroll-container > div {
+        width: 100%;
+    }
+
+    .container > div {
+        width: 100%;
+    }
+
+    .Pixso-canvas-0_1 > div {
+        width: 100%;
+    }
+
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: white;
+    }
+
+    span {
+        word-break: break-word;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .scroll-container {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
+
+    .Pixso-canvas-0_1 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-frame-86_253 {
+        width: 100%;
+        height: 1080px;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .Pixso-rectangle-86_254 {
+        width: 1920px;
+        height: 1167px;
+        position: absolute;
+        left: 0px;
+        top: -87px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/d0b662d37c13f3cd571f2c69d9a9c3b8cef077cf.png');
+    }
+
+    .Pixso-rectangle-86_255 {
+        width: 1920px;
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        top: 100px;
+        background-color: rgba(181, 166, 146, 1);
+    }
+
+    .Pixso-rectangle-86_256 {
+        width: 1920px;
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background-color: rgba(228, 232, 233, 1);
+    }
+
+    .Pixso-rectangle-86_258 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 83px;
+        top: 124px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/29824a1d577619c17f35a083b64052d5470b746c.png');
+    }
+
+    .Pixso-rectangle-86_259 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 855px;
+        top: 124px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/9956c8dd6df6101cd3fe4cda3fa40b3cd4fefc7d.png');
+    }
+
+    .Pixso-rectangle-86_260 {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 1800px;
+        top: 25px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/e624fd7bf24ca84e28a808898eaea5ef7b0f50b7.png');
+    }
+
+    .Pixso-paragraph-86_261 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 254px;
+        height: 50px;
+        position: absolute;
+        left: 163px;
+        top: 25px;
+    }
+
+    .Pixso-rectangle-86_262 {
+        width: 60px;
+        height: 60.000003814697266px;
+        position: absolute;
+        left: 78px;
+        top: 14px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/5bc405ae4e6410a424f5716018a709e3ae2a4a18.png');
+    }
+
+    .Pixso-paragraph-86_263 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 284px;
+        height: 37px;
+        position: absolute;
+        left: 163px;
+        top: 132px;
+    }
+
+    .Pixso-paragraph-86_264 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 127px;
+        height: 46px;
+        position: absolute;
+        left: 938px;
+        top: 130px;
+    }
+
+    .Pixso-group-191_96 {
+        width: 173px;
+        height: 50px;
+        position: absolute;
+        left: 1667px;
+        top: 131px;
+    }
+
+    .Pixso-vector-86_257 {
+        width: 24.08%;
+        height: 83.33%;
+        background-image: url('/static/image/Vector_86_257.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 0%;
+        right: 75.92%;
+        top: 2%;
+        bottom: 14.67%;
+    }
+
+    .Pixso-paragraph-86_265 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 101px;
+        height: 50px;
+        position: absolute;
+        left: 72px;
+        top: 0px;
+    }
+
+    .Pixso-paragraph-86_266 {
+        font-size: 28px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 234px;
+        height: 50px;
+        position: absolute;
+        left: 1536px;
+        top: 31px;
+    }
+
+    .Pixso-paragraph-86_267 {
+        font-size: 28px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 28.85%;
+        height: 4.63%;
+        position: absolute;
+        left: 27.97%;
+        right: 43.18%;
+        top: 2.87%;
+        bottom: 92.5%;
+    }
+
+    .Pixso-paragraph-86_268 {
+        font-size: 28px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 13.23%;
+        height: 4.63%;
+        position: absolute;
+        left: 64.17%;
+        right: 22.6%;
+        top: 2.87%;
+        bottom: 92.5%;
+    }
+
+    .Pixso-vector-86_269 {
+        width: 1.98%;
+        height: 3.52%;
+        background-image: url('/static/image/Vector_86_269.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 59.84%;
+        right: 38.18%;
+        top: 2.5%;
+        bottom: 93.98%;
+    }
+
+    .Pixso-rectangle-86_270 {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 467px;
+        top: 25px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/bdf9d23f7230a55559c910f845ae3a8af3c5041c.png');
+    }
+
+    .Pixso-rectangle-86_271 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-86_271 {
+        position: absolute;
+        left: 60px;
+        top: 308px;
+        width: 1330px;
+        height: 645px;
+    }
+
+    .stroke-86_271 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-86_315 {
+        width: 1125px;
+        height: 229px;
+        position: absolute;
+        left: 186px;
+        top: 343.999755859375px;
+        border-radius: 15px 15px 15px 15px;
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .Pixso-rectangle-86_272 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-86_272 {
+        position: absolute;
+        left: 1450px;
+        top: 308px;
+        width: 410px;
+        height: 645px;
+    }
+
+    .stroke-86_272 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-86_283 {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 1251px;
+        top: 115px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/be88ae1e69bc142c1f93b625cf265d5d05d239fa.png');
+    }
+
+    .Pixso-paragraph-86_284 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 1341px;
+        top: 130px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-group-86_285 {
+        width: 246px;
+        height: 60.000003814697266px;
+        position: absolute;
+        left: 454px;
+        top: 121px;
+    }
+
+    .Pixso-paragraph-86_286 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 90px;
+        top: 9.000003814697266px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-rectangle-86_287 {
+        width: 60px;
+        height: 60.000003814697266px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/4bd20638016dd4ec2516a186b9e5d67c7b2370d7.png');
+    }
+
+    .Pixso-rectangle-86_302 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 108px;
+        top: 782.999755859375px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/39219e0aa707729e3da5c02e151d9613189a0685.png');
+    }
+
+    .Pixso-rectangle-86_307 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 108px;
+        top: 358.999755859375px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/e624fd7bf24ca84e28a808898eaea5ef7b0f50b7.png');
+    }
+
+    .Pixso-rectangle-86_305 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 108px;
+        top: 605.999755859375px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/39219e0aa707729e3da5c02e151d9613189a0685.png');
+    }
+
+    .Pixso-paragraph-86_310 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 1516px;
+        top: 336.999755859375px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-text-86_311 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: Regular;
+        line-height: 48px;
+        color: rgba(0, 0, 0, 1);
+        width: 367px;
+        height: auto;
+        position: absolute;
+        left: 1476px;
+        top: 432.999755859375px;
+    }
+
+    .Pixso-paragraph-86_311_0, .Pixso-paragraph-86_311_1, .Pixso-paragraph-86_311_2,
+    .Pixso-paragraph-86_311_3, .Pixso-paragraph-86_311_4, .Pixso-paragraph-86_311_5,
+    .Pixso-paragraph-86_311_6, .Pixso-paragraph-86_311_7, .Pixso-paragraph-86_311_8 {
+        line-height: 48px;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-86_311_0_1, .Pixso-span-86_311_1_1, .Pixso-span-86_311_3_1,
+    .Pixso-span-86_311_4_1, .Pixso-span-86_311_6_1, .Pixso-span-86_311_7_1,
+    .Pixso-span-86_311_5_2, .Pixso-span-86_311_8_2 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-86_311_2_1, .Pixso-span-86_311_5_1, .Pixso-span-86_311_8_1 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        text-decoration: underline;
+        color: rgba(0, 0, 0, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-rectangle-86_312 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: transparent;
+    }
+
+    .stroke-wrapper-86_312 {
+        position: absolute;
+        left: 1450px;
+        top: 308.999755859375px;
+        width: 410px;
+        height: 100px;
+    }
+
+    .stroke-86_312 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .stroke-wrapper-delete {
+        position: absolute;
+        left: 214px;
+        top: 497px;
+        width: 210px;
+        height: 60px;
+    }
+    .stroke-delete {
+        position: absolute;
+        inset: 0px;
+        border-radius: 15px 15px 15px 15px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(255, 0, 0, 0.5);
+    }
+    .Pixso-rectangle-delete {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 15px 15px 15px 15px;
+        background-color: rgba(255, 200, 200, 1);
+    }
+    .Pixso-paragraph-delete {
+        font-size: 24px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        line-height: 44px;
+        color: rgba(200, 0, 0, 0.75);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 275px;
+        top: 505px;
+        white-space: nowrap;
+        flex-grow: 0;
+    }
+
+    .Pixso-rectangle-86_313 {
+        width: 1125px;
+        height: 153px;
+        position: absolute;
+        left: 186px;
+        top: 605.999755859375px;
+        border-radius: 15px 15px 15px 15px;
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .Pixso-rectangle-86_314 {
+        width: 1125px;
+        height: 153px;
+        position: absolute;
+        left: 186px;
+        top: 782.999755859375px;
+        border-radius: 15px 15px 15px 15px;
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .Pixso-paragraph-86_332 {
+        font-size: 24px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        line-height: 44px;
+        color: rgba(0, 0, 0, 1);
+        width: 1068px;
+        height: auto;
+        position: absolute;
+        left: 213px;
+        top: 835.999755859375px;
+    }
+
+    .Pixso-paragraph-86_335 {
+        font-size: 24px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        line-height: 44px;
+        color: rgba(0, 0, 0, 1);
+        width: 1068px;
+        height: auto;
+        position: absolute;
+        left: 213px;
+        top: 655.999755859375px;
+    }
+
+    .Pixso-rectangle-151_64 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 15px 15px 15px 15px;
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .stroke-wrapper-151_64 {
+        position: absolute;
+        left: 880px;
+        top: 497px;
+        width: 410px;
+        height: 60px;
+    }
+
+    .stroke-151_64 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 15px 15px 15px 15px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-paragraph-151_65 {
+        font-size: 24px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        line-height: 44px;
+        color: rgba(0, 0, 0, 0.75);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 1002px;
+        top: 505px;
+        white-space: nowrap;
+        flex-grow: 0;
+    }
+
+    .star-rating {
+        display: flex;
+        gap: 7px;
+        z-index: 10;
+    }
+
+    .star-rating label {
+        cursor: pointer;
+    }
+
+    .star-rating input {
+        display: none;
+    }
+
+    .star-rating .star-img {
+        width: 30px;
+        height: 30px;
+        transition: 0.2s;
+    }
+
+    .star-static {
+        display: flex;
+        gap: 7px;
+        z-index: 10;
+    }
+
+    .star-static .star-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* ========== МОДАЛКА ПРОФИЛЯ ========== */
+    #modal_profile_toggle {
+        display: none;
+    }
+
+    .modal-overlay-profile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(196, 196, 196, 0.56);
+        z-index: 999;
+        display: none;
+    }
+
+    .modal-profile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        display: none;
+    }
+
+    #modal_profile_toggle:checked ~ .modal-overlay-profile,
+    #modal_profile_toggle:checked ~ .modal-profile {
+        display: block;
+    }
+
+    .Pixso-rectangle-41_58 {
+        width: 2069px;
+        height: 1301px;
+        position: absolute;
+        left: -88px;
+        top: -62px;
+        background-color: rgba(196, 196, 196, 1);
+        opacity: 0.5600000023841858;
+    }
+
+    .Pixso-rectangle-41_59 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_59 {
+        position: absolute;
+        left: 586px;
+        top: 169px;
+        width: 748px;
+        height: 70px;
+    }
+
+    .stroke-41_59 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_60 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_60 {
+        position: absolute;
+        left: 586px;
+        top: 239px;
+        width: 748px;
+        height: 680px;
+    }
+
+    .stroke-41_60 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_61 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_61 {
+        position: absolute;
+        left: 625px;
+        top: 798px;
+        width: 296px;
+        height: 71px;
+    }
+
+    .stroke-41_61 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_62 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_62 {
+        position: absolute;
+        left: 999px;
+        top: 798px;
+        width: 296px;
+        height: 71px;
+    }
+
+    .stroke-41_62 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_64 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_64 {
+        position: absolute;
+        left: 625px;
+        top: 312px;
+        width: 670px;
+        height: 71px;
+    }
+
+    .stroke-41_64 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_88 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_88 {
+        position: absolute;
+        left: 625px;
+        top: 457px;
+        width: 670px;
+        height: 71px;
+    }
+
+    .stroke-41_88 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_90 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_90 {
+        position: absolute;
+        left: 625px;
+        top: 602px;
+        width: 670px;
+        height: 71px;
+    }
+
+    .stroke-41_90 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .profile-modal-text {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        position: absolute;
+        white-space: pre;
+    }
+
+    .profile-modal-placeholder {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: #000;
+        opacity: 0.48;
+        position: absolute;
+        white-space: pre;
+    }
+
+    .profile-modal-input {
+        position: absolute;
+        border: none;
+        background: transparent;
+        font-size: 30px;
+        font-family: 'Inter-Regular';
+        color: #000;
+        opacity: 0.48;
+        outline: none;
+        width: 640px;
+        height: 40px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Чекбокс для модалки профиля -->
+<input type="checkbox" id="modal_profile_toggle" style="display: none;">
+
+<div class="scroll-container">
+    <div id="0_1" class="Pixso-canvas-0_1">
+        <div id="86_253" class="Pixso-frame-86_253">
+            <div id="86_254" class="Pixso-rectangle-86_254"></div>
+            <div id="86_255" class="Pixso-rectangle-86_255"></div>
+            <div id="86_256" class="Pixso-rectangle-86_256"></div>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('profile') }}{% else %}{{ url_for('index') }}{% endif %}" id="86_258" class="Pixso-rectangle-86_258" style="cursor: pointer; display: block;"></a>
+            <a href="{{ url_for('service') }}" id="86_259" class="Pixso-rectangle-86_259" style="cursor: pointer; display: block;"></a>
+            <label for="modal_profile_toggle" id="86_260" class="Pixso-rectangle-86_260" style="cursor: pointer; display: block;"></label>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('profile') }}{% else %}{{ url_for('index') }}{% endif %}" id="86_261" class="Pixso-paragraph-86_261" style="cursor: pointer; text-decoration: none; color: inherit;">Hamster Royal</a>
+            <div id="86_262" class="Pixso-rectangle-86_262" style="cursor: pointer;"></div>
+            <a href="{{ url_for('rooms') }}" id="86_263" class="Pixso-paragraph-86_263" style="cursor: pointer; text-decoration: none; color: inherit;">Номера</a>
+            <a href="{{ url_for('service') }}" id="86_264" class="Pixso-paragraph-86_264" style="cursor: pointer; text-decoration: none; color: inherit;">Услуги</a>
+            <a href="{{ url_for('about') }}" id="191_96" class="Pixso-group-191_96" style="cursor: pointer; text-decoration: none; color: inherit;">
+                <div id="86_257" class="Pixso-vector-86_257"></div>
+                <p id="86_265" class="Pixso-paragraph-86_265">О нас</p>
+            </a>
+            <label for="modal_profile_toggle" id="86_266" class="Pixso-paragraph-86_266" style="cursor: pointer;">Личный кабинет</label>
+            <p id="86_267" class="Pixso-paragraph-86_267">Москва, Ул. Пушкина, дом Колотушкина</p>
+            <p id="86_268" class="Pixso-paragraph-86_268">8 (800) 555 35 35</p>
+            <div id="86_269" class="Pixso-vector-86_269"></div>
+            <div id="86_270" class="Pixso-rectangle-86_270"></div>
+            <div id="86_271" class="stroke-wrapper-86_271">
+                <div class="Pixso-rectangle-86_271"></div>
+                <div class="stroke-86_271"></div>
+            </div>
+            <div id="86_315" class="Pixso-rectangle-86_315"></div>
+            <div id="86_272" class="stroke-wrapper-86_272">
+                <div class="Pixso-rectangle-86_272"></div>
+                <div class="stroke-86_272"></div>
+            </div>
+            <div id="86_283" class="Pixso-rectangle-86_283"></div>
+            <p id="86_284" class="Pixso-paragraph-86_284">Отзывы</p>
+            <a href="{{ url_for('wallet') }}" id="86_285" class="Pixso-group-86_285" style="cursor: pointer; text-decoration: none; color: inherit;">
+                <p id="86_286" class="Pixso-paragraph-86_286">Кошелек</p>
+                <div id="86_287" class="Pixso-rectangle-86_287"></div>
+            </a>
+            <div id="86_302" class="Pixso-rectangle-86_302"></div>
+            <div id="86_307" class="Pixso-rectangle-86_307"></div>
+            <div id="86_305" class="Pixso-rectangle-86_305"></div>
+            <p id="86_310" class="Pixso-paragraph-86_310">Наши контакты</p>
+            <div id="86_311" class="Pixso-text-86_311">
+                <p class="Pixso-paragraph-86_311_0"><span class="Pixso-span-86_311_0_1">Оператор 24/7<br></span></p>
+                <p class="Pixso-paragraph-86_311_1"><span class="Pixso-span-86_311_1_1">Телефон: </span></p>
+                <p class="Pixso-paragraph-86_311_2"><a class="Pixso-span-86_311_2_1" href="tel:+74957377000" target="_blank">+7 (495) 737-70-00</a></p>
+                <p class="Pixso-paragraph-86_311_3"><span class="Pixso-span-86_311_3_1">Отдел продаж<br></span></p>
+                <p class="Pixso-paragraph-86_311_4"><span class="Pixso-span-86_311_4_1">Телефон: </span></p>
+                <p class="Pixso-paragraph-86_311_5"><a class="Pixso-span-86_311_5_1" href="tel:+74957377046" target="_blank">+7 (777) 737-70-46</a><span class="Pixso-span-86_311_5_2"><br></span></p>
+                <p class="Pixso-paragraph-86_311_6"><span class="Pixso-span-86_311_6_1">Служба бронирования<br></span></p>
+                <p class="Pixso-paragraph-86_311_7"><span class="Pixso-span-86_311_7_1">Телефон: </span></p>
+                <p class="Pixso-paragraph-86_311_8"><a class="Pixso-span-86_311_8_1" href="tel:+74957377070" target="_blank">+7 (777) 737-70-70</a><span class="Pixso-span-86_311_8_2"><br></span></p>
+            </div>
+            <div id="86_312" class="stroke-wrapper-86_312">
+                <div class="Pixso-rectangle-86_312"></div>
+                <div class="stroke-86_312"></div>
+            </div>
+            <div id="86_313" class="Pixso-rectangle-86_313"></div>
+            <div id="86_314" class="Pixso-rectangle-86_314"></div>
+
+            <!-- ====== ЗВЁЗДЫ ДЛЯ ПЕРВОГО ОТЗЫВА (СВОЙ — КЛИКАБЕЛЬНЫЕ) ====== -->
+            <div class="star-rating" id="my_star_rating" style="position: absolute; left: 213px; top: 365px;">
+                <label><input type="radio" name="my_rating" value="1"><img src="/static/image/Star_86_323.png" class="star-img" data-value="1"></label>
+                <label><input type="radio" name="my_rating" value="2"><img src="/static/image/Star_86_323.png" class="star-img" data-value="2"></label>
+                <label><input type="radio" name="my_rating" value="3"><img src="/static/image/Star_86_323.png" class="star-img" data-value="3"></label>
+                <label><input type="radio" name="my_rating" value="4"><img src="/static/image/Star_86_323.png" class="star-img" data-value="4"></label>
+                <label><input type="radio" name="my_rating" value="5"><img src="/static/image/Star_86_323.png" class="star-img" data-value="5"></label>
+            </div>
+
+            <!-- Статичные звёзды для второго отзыва (НЕ кликабельные) -->
+            <div class="star-static" style="position: absolute; left: 213px; top: 625px;">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+                <img src="/static/image/Star_86_324.png" class="star-img">
+            </div>
+
+            <!-- Статичные звёзды для третьего отзыва (НЕ кликабельные) -->
+            <div class="star-static" style="position: absolute; left: 213px; top: 801px;">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+                <img src="/static/image/Star_86_323.png" class="star-img">
+            </div>
+
+            <p id="86_332" class="Pixso-paragraph-86_332">Заехали в отель, попросили паспорт обратно, неделю не отдавали. Странно, уехали с 3 микрозаймами, сам отель хороший.</p>
+            <p id="86_335" class="Pixso-paragraph-86_335">Самый лучший отель в котором я когда либо бывал.</p>
+
+            <!-- Свой отзыв: текст и поле ввода -->
+            <form method="POST" action="{{ url_for('save_review') }}" id="review_form" style="display: contents;">
+                <p id="my_review_text" style="position: absolute; left: 214px; top: 408.999755859375px; width: 1068px; height: auto; font-size: 24px; font-family: 'Inter-Regular'; color: rgba(0,0,0,0.75); line-height: 44px; {% if not current_user.is_authenticated or not current_user.review_sent %}display: none;{% endif %}">{{ current_user.review_text if current_user.is_authenticated and current_user.review_text else '' }}</p>
+
+                <textarea id="my_review_input" name="review_text" placeholder="Напишите ваш отзыв здесь..." maxlength="500" style="position: absolute; left: 214px; top: 408.999755859375px; width: 1068px; height: 80px; border: none; background: transparent; font-size: 24px; font-family: 'Inter-Regular'; color: rgba(0,0,0,0.75); outline: none; resize: none; line-height: 44px; {% if current_user.is_authenticated and current_user.review_sent %}display: none;{% endif %}">{{ current_user.review_text if current_user.is_authenticated and current_user.review_text else '' }}</textarea>
+
+                <input type="hidden" name="review_rating" id="review_rating_input" value="{{ current_user.review_rating if current_user.is_authenticated and current_user.review_rating else 0 }}">
+            </form>
+
+            <div id="151_64" class="stroke-wrapper-151_64" style="cursor: pointer;">
+                <div class="Pixso-rectangle-151_64"></div>
+                <div class="stroke-151_64"></div>
+            </div>
+            <p id="151_65" class="Pixso-paragraph-151_65" style="cursor: pointer;">Отправить</p>
+
+            <!-- Кнопка Удалить (только если отзыв отправлен) -->
+            {% if current_user.is_authenticated and current_user.review_sent %}
+            <div id="delete_btn" class="stroke-wrapper-delete" style="cursor: pointer;">
+                <div class="Pixso-rectangle-delete"></div>
+                <div class="stroke-delete"></div>
+            </div>
+            <p id="delete_label" class="Pixso-paragraph-delete" style="cursor: pointer;">Удалить</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- МОДАЛКА ПРОФИЛЯ -->
+<div class="modal-overlay-profile" onclick="document.getElementById('modal_profile_toggle').checked = false;"></div>
+<div class="modal-profile">
+    <div style="position: relative; width: 100%; height: 100%;">
+        <div class="Pixso-rectangle-41_58"></div>
+        <div class="stroke-wrapper-41_59">
+            <div class="Pixso-rectangle-41_59"></div>
+            <div class="stroke-41_59"></div>
+        </div>
+        <div class="stroke-wrapper-41_60">
+            <div class="Pixso-rectangle-41_60"></div>
+            <div class="stroke-41_60"></div>
+        </div>
+        <form method="POST" action="{{ url_for('edit_profile') }}" id="profile_form">
+            <input type="hidden" name="next" value="{{ request.url }}">
+            <label for="modal_profile_toggle" class="stroke-wrapper-41_61" style="cursor: pointer;" onclick="document.getElementById('profile_form').reset();">
+                <div class="Pixso-rectangle-41_61"></div>
+                <div class="stroke-41_61"></div>
+            </label>
+            <button type="submit" class="stroke-wrapper-41_62" style="cursor: pointer; border: none; background: transparent;">
+                <div class="Pixso-rectangle-41_62"></div>
+                <div class="stroke-41_62"></div>
+            </button>
+            <div class="stroke-wrapper-41_64">
+                <div class="Pixso-rectangle-41_64"></div>
+                <div class="stroke-41_64"></div>
+            </div>
+            <p class="profile-modal-text" style="left: 625px; top: 263px;">Имя пользователя</p>
+            <input type="text" name="name" value="{{ current_user.name if current_user.is_authenticated else '' }}" placeholder="Текущее имя пользователя"
+                   class="profile-modal-input" style="left: 638px; top: 330px;">
+            <p class="profile-modal-text" style="left: 625px; top: 408px;">Сменить почту</p>
+            <div class="stroke-wrapper-41_88">
+                <div class="Pixso-rectangle-41_88"></div>
+                <div class="stroke-41_88"></div>
+            </div>
+            <input type="email" name="email" value="{{ current_user.email if current_user.is_authenticated else '' }}" placeholder="Введите новый адрес электронной почты"
+                   class="profile-modal-input" style="left: 638px; top: 474px;">
+            <p class="profile-modal-text" style="left: 625px; top: 553px;">Сменить пароль</p>
+            <div class="stroke-wrapper-41_90">
+                <div class="Pixso-rectangle-41_90"></div>
+                <div class="stroke-41_90"></div>
+            </div>
+            <input type="password" name="new_password" placeholder="Введите новый пароль"
+                   class="profile-modal-input" style="left: 638px; top: 620px;">
+            <p class="profile-modal-text" style="left: 864px; top: 182px; font-size: 36px;">ПРОФИЛЬ</p>
+            <p class="profile-modal-placeholder" style="left: 1051px; top: 816px;">СОХРАНИТЬ</p>
+            <a href="{{ url_for('logout') }}" style="width: 50px; height: 50px; background-image: url('/static/image/exit_to_app.png'); background-size: 100% 100%; background-repeat: no-repeat; position: absolute; left: 48.7%; top: 711px; cursor: pointer; display: block;"></a>
+            <a href="{{ url_for('logout') }}" style="position: absolute; left: 625px; top: 717px; font-size: 30px; font-family: 'Inter-Regular'; font-weight: 600; color: #000; text-decoration: none;">Выйти из профиля</a>
+        </form>
+        <p class="profile-modal-placeholder" style="left: 704px; top: 816px;">ОТМЕНА</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+    const myStarContainer = document.getElementById('my_star_rating');
+    const myStars = myStarContainer.querySelectorAll('.star-img');
+    const ratingInput = document.getElementById('review_rating_input');
+    let starsLocked = {% if current_user.is_authenticated and current_user.review_sent %}true{% else %}false{% endif %};
+
+    const savedRating = parseInt(ratingInput.value) || 0;
+    myStars.forEach((s, index) => {
+        if (index < savedRating) {
+            s.src = '/static/image/Star_86_323.png';
+        } else {
+            s.src = '/static/image/Star_86_324.png';
+        }
+    });
+
+    myStars.forEach(star => {
+        star.addEventListener('click', function() {
+            if (starsLocked) return;
+            const value = parseInt(this.dataset.value);
+            ratingInput.value = value;
+            myStars.forEach((s, index) => {
+                if (index < value) {
+                    s.src = '/static/image/Star_86_323.png';
+                } else {
+                    s.src = '/static/image/Star_86_324.png';
+                }
+            });
+        });
+    });
+
+    const submitBtn = document.getElementById('151_64');
+    const submitLabel = document.getElementById('151_65');
+    const reviewInput = document.getElementById('my_review_input');
+    const reviewText = document.getElementById('my_review_text');
+    const reviewForm = document.getElementById('review_form');
+    let isSent = {% if current_user.is_authenticated and current_user.review_sent %}true{% else %}false{% endif %};
+
+    if (isSent) {
+        submitLabel.textContent = 'Редактировать';
+    }
+
+    submitBtn.addEventListener('click', function() {
+        if (!isSent) {
+            const text = reviewInput.value.trim();
+            if (text) {
+                reviewForm.submit();
+            }
+        } else {
+            reviewText.style.display = 'none';
+            reviewInput.style.display = 'block';
+            submitLabel.textContent = 'Отправить';
+            starsLocked = false;
+            isSent = false;
+        }
+    });
+
+    submitLabel.addEventListener('click', function() {
+        submitBtn.click();
+    });
+
+    // Удаление отзыва через fetch с методом DELETE
+    const deleteBtn = document.getElementById('delete_btn');
+    const deleteLabel = document.getElementById('delete_label');
+    if (deleteBtn && deleteLabel) {
+        function doDelete() {
+            fetch('{{ url_for("delete_review") }}', { method: 'DELETE' })
+                .then(function() { window.location.href = '{{ url_for("reviews") }}'; });
+        }
+        deleteBtn.addEventListener('click', doDelete);
+        deleteLabel.addEventListener('click', doDelete);
+
+        submitBtn.addEventListener('click', function() {
+            if (isSent) {
+                deleteBtn.style.display = 'none';
+                deleteLabel.style.display = 'none';
+            }
+        });
+    }
+</script>
+{% endblock %}

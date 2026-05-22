@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hamster Royal{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+    <style>
+        .flash-container {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none;
+        }
+        .flash-msg {
+            background: #ff5f5f;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: Inter, sans-serif;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            pointer-events: auto;
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            max-width: 420px;
+            text-align: center;
+        }
+        .flash-msg.success {
+            background: #3dba74;
+        }
+        .flash-msg.hiding {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    <!-- Flash уведомления -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-container" id="flash-container">
+            {% for category, message in messages %}
+            <div class="flash-msg {{ 'success' if category == 'success' else '' }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+
+    <script>
+        (function () {
+            var msgs = document.querySelectorAll('.flash-msg');
+            if (!msgs.length) return;
+
+            function hideMsg(el) {
+                el.classList.add('hiding');
+                setTimeout(function () {
+                    el.remove();
+                    if (!document.querySelectorAll('.flash-msg').length) {
+                        var c = document.getElementById('flash-container');
+                        if (c) c.remove();
+                    }
+                }, 420);
+            }
+
+            msgs.forEach(function (el) {
+                // клик — закрыть сразу
+                el.addEventListener('click', function () { hideMsg(el); });
+                // автоисчезновение через 4 секунды
+                setTimeout(function () { hideMsg(el); }, 4000);
+            });
+        })();
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

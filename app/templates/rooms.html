@@ -1,0 +1,1182 @@
+{% extends "base.html" %}
+
+{% block title %}Номера - Hamster Royal{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* ========== ОРИГИНАЛЬНЫЕ СТИЛИ СТРАНИЦЫ НОМЕРОВ ========== */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    ol, ul, menu {
+        padding-inline-start: 0;
+        list-style: none;
+    }
+
+    ol li::marker, ul li::before {
+        letter-spacing: 0;
+    }
+
+    .scroll-container > div {
+        width: 100%;
+    }
+
+    .container > div {
+        width: 100%;
+    }
+
+    .Pixso-canvas-0_1 > div {
+        width: 100%;
+    }
+
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: white;
+    }
+
+    span {
+        word-break: break-word;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .scroll-container {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
+
+    .Pixso-canvas-0_1 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-frame-23_1 {
+        width: 100%;
+        height: 1080px;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .Pixso-rectangle-25_3 {
+        width: 760px;
+        height: 1080px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/3b824458b6be5ba54a0b4a8f91bee543b7e8845e.png');
+    }
+
+    .Pixso-rectangle-44_27 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        filter: drop-shadow(0px 4px 200px rgba(0, 0, 0, 0.25));
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/a8835fef9bd5262e7c5d4eb4a126f56258f4cce7.png');
+    }
+
+    .stroke-wrapper-44_27 {
+        position: absolute;
+        left: 640px;
+        top: 0px;
+        width: 640px;
+        height: 1080px;
+    }
+
+    .stroke-44_27 {
+        position: absolute;
+        inset: -2.5px -2.5px -2.5px -2.5px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 5px 5px 5px 5px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(254, 238, 207, 0.6000000238418579);
+    }
+
+    .Pixso-rectangle-44_28 {
+        width: 640px;
+        height: 1080px;
+        position: absolute;
+        left: 1280px;
+        top: 0px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/31b3b7594a12c640a341a671b5342d65d87ad6dc.png');
+    }
+
+    .Pixso-rectangle-44_33 {
+        width: 1920px;
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        top: 100px;
+        background-color: rgba(181, 166, 146, 1);
+    }
+
+    .Pixso-rectangle-44_34 {
+        width: 1920px;
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background-color: rgba(228, 232, 233, 1);
+    }
+
+    .Pixso-vector-44_35 {
+        width: 2.17%;
+        height: 3.86%;
+        background-image: url('/static/image/Vector_44_35.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 86.82%;
+        right: 11.01%;
+        top: 12.22%;
+        bottom: 83.92%;
+    }
+
+    .Pixso-rectangle-44_36 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 83px;
+        top: 124px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/29824a1d577619c17f35a083b64052d5470b746c.png');
+    }
+
+    .Pixso-rectangle-44_37 {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 855px;
+        top: 124px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/9956c8dd6df6101cd3fe4cda3fa40b3cd4fefc7d.png');
+    }
+
+    .Pixso-rectangle-44_38 {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 1800px;
+        top: 25px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/e624fd7bf24ca84e28a808898eaea5ef7b0f50b7.png');
+    }
+
+    .Pixso-paragraph-44_39 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 254px;
+        height: 50px;
+        position: absolute;
+        left: 163px;
+        top: 25px;
+    }
+
+    .Pixso-rectangle-44_40 {
+        width: 60px;
+        height: 60.000003814697266px;
+        position: absolute;
+        left: 78px;
+        top: 14px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/5bc405ae4e6410a424f5716018a709e3ae2a4a18.png');
+    }
+
+    .Pixso-paragraph-44_41 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 284px;
+        height: 37px;
+        position: absolute;
+        left: 163px;
+        top: 132px;
+    }
+
+    .Pixso-paragraph-44_42 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 127px;
+        height: 46px;
+        position: absolute;
+        left: 938px;
+        top: 130px;
+    }
+
+    .Pixso-paragraph-44_43 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 101px;
+        height: 50px;
+        position: absolute;
+        left: 1739px;
+        top: 131px;
+    }
+
+    .Pixso-paragraph-44_44 {
+        font-size: 28px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 234px;
+        height: 50px;
+        position: absolute;
+        left: 1536px;
+        top: 31px;
+    }
+
+    .Pixso-paragraph-44_45 {
+        font-size: 28px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 28.85%;
+        height: 4.63%;
+        position: absolute;
+        left: 27.97%;
+        right: 43.18%;
+        top: 2.87%;
+        bottom: 92.5%;
+    }
+
+    .Pixso-paragraph-44_46 {
+        font-size: 28px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: 13.23%;
+        height: 4.63%;
+        position: absolute;
+        left: 64.17%;
+        right: 22.6%;
+        top: 2.87%;
+        bottom: 92.5%;
+    }
+
+    .Pixso-vector-44_47 {
+        width: 1.98%;
+        height: 3.52%;
+        background-image: url('/static/image/Vector_44_47.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 59.84%;
+        right: 38.18%;
+        top: 2.5%;
+        bottom: 93.98%;
+    }
+
+    .Pixso-rectangle-44_48 {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 467px;
+        top: 25px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/bdf9d23f7230a55559c910f845ae3a8af3c5041c.png');
+    }
+
+    .Pixso-rectangle-44_53 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-44_53 {
+        position: absolute;
+        left: 105px;
+        top: 842px;
+        width: 401px;
+        height: 112px;
+    }
+
+    .stroke-44_53 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-44_57 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-44_57 {
+        position: absolute;
+        left: 760px;
+        top: 842px;
+        width: 401px;
+        height: 112px;
+    }
+
+    .stroke-44_57 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-44_55 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-44_55 {
+        position: absolute;
+        left: 1388px;
+        top: 842px;
+        width: 401px;
+        height: 112px;
+    }
+
+    .stroke-44_55 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-44_67 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-44_67 {
+        position: absolute;
+        left: 105px;
+        top: 501px;
+        width: 400px;
+        height: 341px;
+    }
+
+    .stroke-44_67 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-44_69 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-44_69 {
+        position: absolute;
+        left: 1388px;
+        top: 501px;
+        width: 400px;
+        height: 341px;
+    }
+
+    .stroke-44_69 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-44_68 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-44_68 {
+        position: absolute;
+        left: 760px;
+        top: 501px;
+        width: 400px;
+        height: 341px;
+    }
+
+    .stroke-44_68 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-paragraph-44_60 {
+        font-size: 96px;
+        font-family: "Kapakana-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 185px;
+        top: 545px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-paragraph-44_66 {
+        font-size: 96px;
+        font-family: "Kapakana-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 1480px;
+        top: 545px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-paragraph-44_65 {
+        font-size: 96px;
+        font-family: "Kapakana-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 840px;
+        top: 545px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-text-44_70 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: Regular;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 196px;
+        top: 727px;
+        white-space: nowrap;
+        flex-grow: 0;
+    }
+
+    .Pixso-paragraph-44_70_0 {
+        line-height: 43.56818389892578px;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-44_70_0_1 {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-44_70_0_2 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-44_70_0_3 {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-paragraph-50_3 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 229px;
+        top: 876px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-paragraph-50_5 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 1512px;
+        top: 876px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-paragraph-50_4 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 880px;
+        top: 876px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-text-50_2 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: Regular;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 1463px;
+        top: 727px;
+        white-space: nowrap;
+        flex-grow: 0;
+    }
+
+    .Pixso-paragraph-50_2_0 {
+        line-height: 43.56818389892578px;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-50_2_0_1 {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-50_2_0_2 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-50_2_0_3 {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-text-50_1 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: Regular;
+        color: rgba(96, 82, 63, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 846px;
+        top: 727px;
+        white-space: nowrap;
+        flex-grow: 0;
+    }
+
+    .Pixso-paragraph-50_1_0 {
+        line-height: 43.56818389892578px;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-50_1_0_1 {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-50_1_0_2 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-span-50_1_0_3 {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(96, 82, 63, 1);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .Pixso-paragraph-86_15 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 1341px;
+        top: 130px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-rectangle-86_16 {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 1251px;
+        top: 115px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/be88ae1e69bc142c1f93b625cf265d5d05d239fa.png');
+    }
+
+    .Pixso-group-86_87 {
+        width: 246px;
+        height: 60.000003814697266px;
+        position: absolute;
+        left: 454px;
+        top: 121px;
+    }
+
+    .Pixso-paragraph-86_88 {
+        font-size: 36px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 90px;
+        top: 9.000003814697266px;
+        white-space: pre;
+        flex-grow: 0;
+    }
+
+    .Pixso-rectangle-86_89 {
+        width: 60px;
+        height: 60.000003814697266px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/image/4bd20638016dd4ec2516a186b9e5d67c7b2370d7.png');
+    }
+
+    /* ========== МОДАЛКА ПРОФИЛЯ ========== */
+    #modal_profile_toggle {
+        display: none;
+    }
+
+    .modal-overlay-profile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(196, 196, 196, 0.56);
+        z-index: 999;
+        display: none;
+    }
+
+    .modal-profile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        display: none;
+    }
+
+    #modal_profile_toggle:checked ~ .modal-overlay-profile,
+    #modal_profile_toggle:checked ~ .modal-profile {
+        display: block;
+    }
+
+    .Pixso-rectangle-41_58 {
+        width: 2069px;
+        height: 1301px;
+        position: absolute;
+        left: -88px;
+        top: -62px;
+        background-color: rgba(196, 196, 196, 1);
+        opacity: 0.5600000023841858;
+    }
+
+    .Pixso-rectangle-41_59 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_59 {
+        position: absolute;
+        left: 586px;
+        top: 169px;
+        width: 748px;
+        height: 70px;
+    }
+
+    .stroke-41_59 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_60 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_60 {
+        position: absolute;
+        left: 586px;
+        top: 239px;
+        width: 748px;
+        height: 680px;
+    }
+
+    .stroke-41_60 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_61 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_61 {
+        position: absolute;
+        left: 625px;
+        top: 798px;
+        width: 296px;
+        height: 71px;
+    }
+
+    .stroke-41_61 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_62 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_62 {
+        position: absolute;
+        left: 999px;
+        top: 798px;
+        width: 296px;
+        height: 71px;
+    }
+
+    .stroke-41_62 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_64 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_64 {
+        position: absolute;
+        left: 625px;
+        top: 312px;
+        width: 670px;
+        height: 71px;
+    }
+
+    .stroke-41_64 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_88 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_88 {
+        position: absolute;
+        left: 625px;
+        top: 457px;
+        width: 670px;
+        height: 71px;
+    }
+
+    .stroke-41_88 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .Pixso-rectangle-41_90 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: rgba(255, 241, 223, 1);
+    }
+
+    .stroke-wrapper-41_90 {
+        position: absolute;
+        left: 625px;
+        top: 602px;
+        width: 670px;
+        height: 71px;
+    }
+
+    .stroke-41_90 {
+        position: absolute;
+        inset: 0px;
+        border-radius: 0px 0px 0px 0px;
+        pointer-events: none;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        box-sizing: border-box;
+        border-color: rgba(0, 0, 0, 1);
+    }
+
+    .profile-modal-text {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        position: absolute;
+        white-space: pre;
+    }
+
+    .profile-modal-placeholder {
+        font-size: 30px;
+        font-family: "Inter-Regular";
+        font-weight: 400;
+        color: #000;
+        opacity: 0.48;
+        position: absolute;
+        white-space: pre;
+    }
+
+    .profile-modal-input {
+        position: absolute;
+        border: none;
+        background: transparent;
+        font-size: 30px;
+        font-family: 'Inter-Regular';
+        color: #000;
+        opacity: 0.48;
+        outline: none;
+        width: 640px;
+        height: 40px;
+    }
+
+    .Pixso-vector-44_11 {
+        width: 50px;
+        height: 50px;
+        background-image: url('/static/image/exit_to_app.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 935px;
+        top: 711px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Чекбокс для модалки профиля -->
+<input type="checkbox" id="modal_profile_toggle" style="display: none;">
+
+<div class="scroll-container">
+    <div id="0_1" class="Pixso-canvas-0_1">
+        <div id="23_1" class="Pixso-frame-23_1">
+            <div id="25_3" class="Pixso-rectangle-25_3"></div>
+            <div id="44_27" class="stroke-wrapper-44_27">
+                <div class="Pixso-rectangle-44_27"></div>
+                <div class="stroke-44_27"></div>
+            </div>
+            <div id="44_28" class="Pixso-rectangle-44_28"></div>
+            <div id="44_33" class="Pixso-rectangle-44_33"></div>
+            <div id="44_34" class="Pixso-rectangle-44_34"></div>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('profile') }}{% else %}{{ url_for('index') }}{% endif %}" id="44_35" class="Pixso-vector-44_35" style="cursor: pointer; display: block;"></a>
+            <div id="44_36" class="Pixso-rectangle-44_36"></div>
+            <div id="44_37" class="Pixso-rectangle-44_37" style="cursor: pointer;"></div>
+            <div id="44_38" class="Pixso-rectangle-44_38" style="cursor: pointer;"></div>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('profile') }}{% else %}{{ url_for('index') }}{% endif %}" id="44_39" class="Pixso-paragraph-44_39" style="cursor: pointer; text-decoration: none; color: inherit;">Hamster Royal</a>
+            <div id="44_40" class="Pixso-rectangle-44_40" style="cursor: pointer;"></div>
+            <p id="44_41" class="Pixso-paragraph-44_41">Номера</p>
+            <a href="{{ url_for('service') }}" id="44_42" class="Pixso-paragraph-44_42" style="cursor: pointer; text-decoration: none; color: inherit;">Услуги</a>
+            <a href="{{ url_for('about') }}" id="44_43" class="Pixso-paragraph-44_43" style="cursor: pointer; text-decoration: none; color: inherit;">О нас</a>
+            <label for="modal_profile_toggle" id="44_44" class="Pixso-paragraph-44_44" style="cursor: pointer;">Личный кабинет</label>
+            <p id="44_45" class="Pixso-paragraph-44_45">Москва, Ул. Пушкина, дом Колотушкина</p>
+            <p id="44_46" class="Pixso-paragraph-44_46">8 (800) 555 35 35</p>
+            <div id="44_47" class="Pixso-vector-44_47"></div>
+            <div id="44_48" class="Pixso-rectangle-44_48"></div>
+            <a href="{{ url_for('booking', type='standard') }}" id="44_53" class="stroke-wrapper-44_53" style="cursor: pointer; display: block;">
+                <div class="Pixso-rectangle-44_53"></div>
+                <div class="stroke-44_53"></div>
+            </a>
+            <a href="{{ url_for('booking', type='business') }}" id="44_57" class="stroke-wrapper-44_57" style="cursor: pointer; display: block;">
+                <div class="Pixso-rectangle-44_57"></div>
+                <div class="stroke-44_57"></div>
+            </a>
+            <a href="{{ url_for('booking', type='luxury') }}" id="44_55" class="stroke-wrapper-44_55" style="cursor: pointer; display: block;">
+                <div class="Pixso-rectangle-44_55"></div>
+                <div class="stroke-44_55"></div>
+            </a>
+            <div id="44_67" class="stroke-wrapper-44_67">
+                <div class="Pixso-rectangle-44_67"></div>
+                <div class="stroke-44_67"></div>
+            </div>
+            <div id="44_69" class="stroke-wrapper-44_69">
+                <div class="Pixso-rectangle-44_69"></div>
+                <div class="stroke-44_69"></div>
+            </div>
+            <div id="44_68" class="stroke-wrapper-44_68">
+                <div class="Pixso-rectangle-44_68"></div>
+                <div class="stroke-44_68"></div>
+            </div>
+            <p id="44_60" class="Pixso-paragraph-44_60">Standart</p>
+            <p id="44_66" class="Pixso-paragraph-44_66">Luxury</p>
+            <p id="44_65" class="Pixso-paragraph-44_65">Business</p>
+            <div id="44_70" class="Pixso-text-44_70">
+                <p id="44_70_0" class="Pixso-paragraph-44_70_0">
+                    <span id="44_70_0_1" class="Pixso-span-44_70_0_1">От</span><span id="44_70_0_2" class="Pixso-span-44_70_0_2"> 4000 </span><span id="44_70_0_3" class="Pixso-span-44_70_0_3">р/сут</span>
+                </p>
+            </div>
+            <div id="50_2" class="Pixso-text-50_2">
+                <p id="50_2_0" class="Pixso-paragraph-50_2_0">
+                    <span id="50_2_0_1" class="Pixso-span-50_2_0_1">От</span><span id="50_2_0_2" class="Pixso-span-50_2_0_2"> 12000 </span><span id="50_2_0_3" class="Pixso-span-50_2_0_3">р/сут</span>
+                </p>
+            </div>
+            <div id="50_1" class="Pixso-text-50_1">
+                <p id="50_1_0" class="Pixso-paragraph-50_1_0">
+                    <span id="50_1_0_1" class="Pixso-span-50_1_0_1">От</span><span id="50_1_0_2" class="Pixso-span-50_1_0_2"> 8000 </span><span id="50_1_0_3" class="Pixso-span-50_1_0_3">р/сут</span>
+                </p>
+            </div>
+            <p id="50_3" class="Pixso-paragraph-50_3">Выбрать</p>
+            <p id="50_5" class="Pixso-paragraph-50_5">Выбрать</p>
+            <p id="50_4" class="Pixso-paragraph-50_4">Выбрать</p>
+            <a href="{{ url_for('reviews') }}" id="86_15" class="Pixso-paragraph-86_15" style="cursor: pointer; text-decoration: none; color: inherit;">Отзывы</a>
+            <div id="86_16" class="Pixso-rectangle-86_16"></div>
+            <div id="86_87" class="Pixso-group-86_87">
+                <a href="{{ url_for('wallet') }}" id="86_88" class="Pixso-paragraph-86_88" style="cursor: pointer; text-decoration: none; color: inherit;">Кошелек</a>
+                <div id="86_89" class="Pixso-rectangle-86_89"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- МОДАЛКА ПРОФИЛЯ -->
+<div class="modal-overlay-profile" onclick="document.getElementById('modal_profile_toggle').checked = false;"></div>
+<div class="modal-profile">
+    <div style="position: relative; width: 100%; height: 100%;">
+        <div class="Pixso-rectangle-41_58"></div>
+        <div class="stroke-wrapper-41_59">
+            <div class="Pixso-rectangle-41_59"></div>
+            <div class="stroke-41_59"></div>
+        </div>
+        <div class="stroke-wrapper-41_60">
+            <div class="Pixso-rectangle-41_60"></div>
+            <div class="stroke-41_60"></div>
+        </div>
+
+        <form method="POST" action="{{ url_for('edit_profile') }}" id="profile_form">
+            <input type="hidden" name="next" value="{{ request.url }}">
+
+            <label for="modal_profile_toggle" class="stroke-wrapper-41_61" style="cursor: pointer;" onclick="document.getElementById('profile_form').reset();">
+                <div class="Pixso-rectangle-41_61"></div>
+                <div class="stroke-41_61"></div>
+            </label>
+
+            <button type="submit" class="stroke-wrapper-41_62" style="cursor: pointer; border: none; background: transparent;">
+                <div class="Pixso-rectangle-41_62"></div>
+                <div class="stroke-41_62"></div>
+            </button>
+
+            <div class="stroke-wrapper-41_64">
+                <div class="Pixso-rectangle-41_64"></div>
+                <div class="stroke-41_64"></div>
+            </div>
+            <p class="profile-modal-text" style="left: 625px; top: 263px;">Имя пользователя</p>
+            <input type="text" name="name" value="{{ current_user.name if current_user.is_authenticated else '' }}" placeholder="Текущее имя пользователя"
+                   class="profile-modal-input" style="left: 638px; top: 330px;">
+
+            <p class="profile-modal-text" style="left: 625px; top: 408px;">Сменить почту</p>
+            <div class="stroke-wrapper-41_88">
+                <div class="Pixso-rectangle-41_88"></div>
+                <div class="stroke-41_88"></div>
+            </div>
+            <input type="email" name="email" value="{{ current_user.email if current_user.is_authenticated else '' }}" placeholder="Введите новый адрес электронной почты"
+                   class="profile-modal-input" style="left: 638px; top: 474px;">
+
+            <p class="profile-modal-text" style="left: 625px; top: 553px;">Сменить пароль</p>
+            <div class="stroke-wrapper-41_90">
+                <div class="Pixso-rectangle-41_90"></div>
+                <div class="stroke-41_90"></div>
+            </div>
+            <input type="password" name="new_password" placeholder="Введите новый пароль"
+                   class="profile-modal-input" style="left: 638px; top: 620px;">
+
+            <p class="profile-modal-text" style="left: 864px; top: 182px; font-size: 36px;">ПРОФИЛЬ</p>
+            <p class="profile-modal-placeholder" style="left: 1051px; top: 816px;">СОХРАНИТЬ</p>
+
+            <a href="{{ url_for('logout') }}" style="width: 50px; height: 50px; background-image: url('/static/image/exit_to_app.png'); background-size: 100% 100%; background-repeat: no-repeat; position: absolute; left: 48.7%; top: 711px; cursor: pointer; display: block;"></a>
+            <a href="{{ url_for('logout') }}" style="position: absolute; left: 625px; top: 717px; font-size: 30px; font-family: 'Inter-Regular'; font-weight: 600; color: #000; text-decoration: none;">Выйти из профиля</a>
+        </form>
+
+        <p class="profile-modal-placeholder" style="left: 704px; top: 816px;">ОТМЕНА</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
