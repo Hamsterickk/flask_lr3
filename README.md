@@ -46,5 +46,5 @@ app/
 ├── models.py         # User, Wallet
 ├── routes.py         # маршруты и бизнес-логика
 ├── static/           # css, шрифты, изображения
-└── templates/         # HTML-шаблоны (Jinja2)
+└── templates/        # HTML-шаблоны (Jinja2)
 hr.py                 # точка входа
